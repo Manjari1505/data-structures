@@ -12,6 +12,12 @@ namespace Array
         {
             List<int> temp = new List<int>();
             int i = 0;
+
+            if(rot>array.Count)
+            {
+                rot = rot - array.Count;
+            }
+
             for (int j = 0; j < rot; j++)
             {
                 temp.Add(array[j]);
@@ -46,7 +52,7 @@ namespace Array
         }
         static void Main(string[] args)
         {
-            var array = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            var array = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9};
             var result = new List<int>();
             var choice = 0;
 
@@ -57,10 +63,13 @@ namespace Array
                 switch (choice)
                 {
                     case 1:
-                        Console.WriteLine("Enter number of rotations: ");
+                        Console.Write("Enter number of rotations: ");
                         int rot = Int32.Parse(Console.ReadLine());
                         result = RotateArray(array, rot);
-                        result.ForEach(Console.WriteLine);
+                        Console.WriteLine();
+                        result.ForEach(x=> Console.Write(x + " "));
+                        Console.WriteLine();
+                        array = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
                         break;
 
                     case -1:
@@ -69,6 +78,7 @@ namespace Array
                         break;
                     default:
                         Console.ReadLine();
+                        array = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
                         break;
                 }
             }
